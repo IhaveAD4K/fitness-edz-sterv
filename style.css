@@ -9,29 +9,29 @@ body {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: #00399d;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
 }
 
 .sidenav a {
-  padding: 8px 8px 8px 32px;
+  padding: 12px 12px 12px 12px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: #ffffff;
   display: block;
   transition: 0.3s;
 }
 
 .sidenav a:hover {
-  color: #f1f1f1;
+  background-color: #ff680a;
 }
 
 .sidenav .closebtn {
   position: absolute;
   top: 0;
-  right: 25px;
+  right: 0px;
   font-size: 36px;
   margin-left: 50px;
 }
@@ -46,3 +46,6 @@ body {
   .sidenav a {font-size: 18px;}
 }
 
+.nav-hatter{
+    background-color:#ffffff;
+}
