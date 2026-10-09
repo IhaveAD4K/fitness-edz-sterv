@@ -16,4 +16,19 @@ class Gyakorlatok{
         this.setPihenoIdo(pihenoIdo);
         this.setSuly(suly);
     }
+      setNev(nev){
+        this.#nev = nev;
+    }
+    getNev(){
+        return this.#nev;
+    }
+    setIzomCsoport(izomCsoport){
+        this.#izomCsoport = izomCsoport;
+    }
+    getIzomCsoport(){
+        return this.#izomCsoport;
+    }
+    setNehezseg(nehezseg){
+        this.#nehezseg = nehezseg;
+    }
 }
