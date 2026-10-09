@@ -1,43 +1,74 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css">
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"/>
-    <script src="JS/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="CSS/style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" ></script>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"/>
-</head>
-<header class="nav-hatter">
-    <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#"><i class="bi bi-house-door"></i> Edzések</a>
-  <a href="#"><i class="bi bi-plus-circle"></i> Új gyakorlat</a>
-  <a href="#"><i class="bi bi-gear"></i> Beállítások</a>
-</div>
-
-<div id="main">
-  
-  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-</div>
-</header>
-<body>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+  <script src="JS/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="CSS/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+  <header class="nav-hatter bg-white">
+    
+<body class="oldalhatter">
 
 
+    <nav id="mySidenav" class="sidenav position-fixed top-0 start-0 h-100 overflow-hidden bg-dark-teal">
+      
+      <button type="button" class="btn text-white fs-2 position-absolute top-0 end-0 me-2" onclick="closeNav()"
+        aria-label="Menü bezárása"><span class="fs-4 nevhatter fw-bold pe-5"><span class="fs-4 text-white">Fit</span>Tracker</span>
+        &times;
+      </button>
 
-<script>
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
-}
+      <a href="#" class="nav-link text-white p-3">
+        <i class="bi bi-house-door me-2"></i>
+        Edzések
+      </a>
 
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("main").style.marginLeft= "0";
-}
-</script>
-   <script src="https://jsdelivr.net"></script>
-</body>
-</html> 
+      <a href="#" class="nav-link text-white p-3">
+        <i class="bi bi-plus-circle me-2"></i>
+        Új gyakorlat
+      </a>
+
+      <a href="#" class="nav-link text-white p-3">
+        <i class="bi bi-gear me-2"></i>
+        Beállítások
+      </a>
+    </nav>
+
+
+    <div id="main" class="p-3 bg-dark-teal d-flex align-items-center justify-content-between">
+      <button type="button" class="btn btn-light fs-3" onclick="openNav()" aria-label="Menü megnyitása">
+        <i class="bi bi-list"></i>
+      </button>
+
+      <div></div><span class="fs-4 nevhatter fw-bold"><span class="fs-4 text-white">Fit</span>Tracker</span>
+      <div class="d-flex align-items-center gap-2 pe-3">
+        <img width="50" height="50" class="img-fluid rounded-circle" src="kep/images.png" alt="Profilkép">
+
+        <span class="text-white">felhasznalonev</span>
+      </div>
+  </header>
+
+  <main class="container py-4">
+
+    <h1>Edzések</h1>
+  </main>
+
+  <footer class="container py-3">
+
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="JS/script.js"></script>
+
+  </body>
+
+</html>
