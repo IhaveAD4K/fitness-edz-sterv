@@ -43,3 +43,6 @@
 .gombhatter{
 background-color: #123d46 !important;
 }
+.gombhatter:hover {
+    background-color: #F54927 !important; 
+}
