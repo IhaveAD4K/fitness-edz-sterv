@@ -1,6 +1,6 @@
 
 .bg-dark-teal {
-    background-color: #123d46;
+    background-color: #123d46 !important;
 }
 
 .nav-hatter {
@@ -43,6 +43,10 @@
 .gombhatter{
 background-color: #123d46 !important;
 }
-.gombhatter:hover {
+.gombhatter:hover  {
     background-color: #F54927 !important; 
+}
+.narancshatter{
+    background-color: #F54927 !important;
+    color: #ebebeb !important;
 }
