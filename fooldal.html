@@ -54,7 +54,7 @@
     </span>
 
     <div class="text-center ms-auto pe-3">
-      <button type="button" class="btn narancshatter" data-bs-toggle="modal" data-bs-target="#exampleModal"><img width="50" height="50" class="img-fluid rounded-circle" src="kep/images.png" alt="Profilkép">
+      <button type="button" class="btn narancshatter" data-bs-toggle="modal" data-bs-target="#profilmodal"><img width="50" height="50" class="img-fluid rounded-circle" src="kep/images.png" alt="Profilkép">
         <span class="text-white">felhasznalonev</span></button>
         
     </div>
@@ -84,7 +84,7 @@
           <h3 class="text-white text-center narancshatter p-2 rounded-3">Fekvenyomás</h3>
         </div>
         <div class="d-flex gap-2">
-        <button type="button" class="btn btn-light flex-fill"><i class="bi bi-eye"></i> Megtekintés</button>
+        <button type="button" class="btn btn-light flex-fill"  data-bs-toggle="modal" data-bs-target="#megtekintes"><i class="bi bi-eye"></i> Megtekintés</button>
         <button type="button" class="btn btn-light flex-fill"><i class="bi bi-pencil-square"></i> Szerkesztés</button>
       </div>  
       </div>
@@ -98,7 +98,7 @@
           <h3 class="text-white text-center narancshatter p-2 rounded-3">Guggolás</h3>
         </div>
         <div class="d-flex gap-2">
-        <button type="button" class="btn btn-light flex-fill"><i class="bi bi-eye"></i> Megtekintés</button>
+        <button type="button" class="btn btn-light flex-fill"  data-bs-toggle="modal" data-bs-target="#megtekintes"><i class="bi bi-eye"></i> Megtekintés</button>
         <button type="button" class="btn btn-light flex-fill"><i class="bi bi-pencil-square"></i> Szerkesztés</button>
       </div>  
       </div>
@@ -111,7 +111,7 @@
           <h3 class="text-white text-center narancshatter p-2 rounded-3">Vállból nyomás</h3>
         </div>
         <div class="d-flex gap-2">
-        <button type="button" class="btn btn-light flex-fill"><i class="bi bi-eye"></i> Megtekintés</button>
+        <button type="button" class="btn btn-light flex-fill" data-bs-toggle="modal" data-bs-target="#megtekintes"><i class="bi bi-eye"></i> Megtekintés</button>
         <button type="button" class="btn btn-light flex-fill"><i class="bi bi-pencil-square"></i> Szerkesztés</button>
       </div>  
       </div>
@@ -128,24 +128,59 @@
 
   
  
-<div class="modal fade" id="exampleModal" tabindex="-1"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
-
+<div class="modal fade " id="profilmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
+    <div class="modal-content bg-dark-teal text-white">
 
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">
-          Profil beállítások
+          Profil
         </h1>
-
-        <button type="button" class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Bezárás"></button>
+        <button type="button" class="btn-close narancshatter" data-bs-dismiss="modal" aria-label="Bezárás"></button>
       </div>
 
       <div class="modal-body">
-        Ide kerülhetnek a profil adatai.
+        <form>
+           <div class="mb-3">
+    <label class="form-label fw-bold">Név:</label>
+    <input type="text" class="form-control" id="felhasznalonev" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label class="form-label fw-bold">Email cím: </label>
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+  </div>
+   <div class="mb-3">
+    <label class="form-label fw-bold">Edzői megnevezés:</label>
+    <input type="text" class="form-control" id="felhasznalonev" aria-describedby="emailHelp">
+  </div>
+  <button type="submit" class="btn btn-success">Mentés</button>
+</form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger"
+                data-bs-dismiss="modal">
+          Bezárás
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade " id="megtekintes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark-teal text-white">
+
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          Profil
+        </h1>
+        <button type="button" class="btn-close narancshatter" data-bs-dismiss="modal" aria-label="Bezárás"></button>
+      </div>
+
+      <div class="modal-body">
+       
       </div>
 
       <div class="modal-footer">
