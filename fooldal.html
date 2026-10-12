@@ -55,7 +55,7 @@
 
     <div class="text-center ms-auto pe-3">
       <button type="button" class="btn narancshatter" data-bs-toggle="modal" data-bs-target="#profilmodal"><img width="50" height="50" class="img-fluid rounded-circle" src="kep/images.png" alt="Profilkép">
-        <span class="text-white">felhasznalonev</span></button>
+        <span class="text-white" id="belepettNev">felhasznalonev</span></button>
         
     </div>
 </div>
@@ -151,17 +151,17 @@
         <form>
            <div class="mb-3">
     <label class="form-label fw-bold">Név:</label>
-    <input type="text" class="form-control" id="felhasznalonev" aria-describedby="emailHelp">
+    <input type="text" class="form-control" id="bejelentkezve" aria-describedby="emailHelp" required>
   </div>
   <div class="mb-3">
     <label class="form-label fw-bold">Email cím: </label>
-    <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required> 
   </div>
    <div class="mb-3">
     <label class="form-label fw-bold">Edzői megnevezés:</label>
-    <input type="text" class="form-control" id="felhasznalonev" aria-describedby="emailHelp">
+    <input type="text" class="form-control" id="edzoimegnevezes" aria-describedby="emailHelp required">
   </div>
-  <button type="submit" class="btn btn-success">Mentés</button>
+  <button type="submit" class="btn btn-success" data-bs-dismiss="modal" onclick="belepes()">Mentés</button>
 </form>
       </div>
 

@@ -31,3 +31,22 @@ function filterSelection(c) {
 document.addEventListener("DOMContentLoaded", function () {
     filterSelection("all");
 });
+
+function belepes() {
+
+    let nev = document.getElementById("bejelentkezve").value;
+
+    if (nev.trim() !== "") {
+
+        document.getElementById("belepettNev").textContent = nev.trim();
+
+        const modalElem = document.getElementById("bejelentkezve");
+        const modal = bootstrap.Modal.getInstance(modalElem);
+
+        if (modal) {
+            modal.hide();
+        }
+    } else {
+        alert("Kérlek, add meg a neved!");
+    }
+}
