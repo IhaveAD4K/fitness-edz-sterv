@@ -40,8 +40,10 @@ function belepes() {
 
         document.getElementById("belepettNev").textContent = nev.trim();
 
-        const modalElem = document.getElementById("bejelentkezve");
+        let modalElem = document.getElementById("profilmodal");
         const modal = bootstrap.Modal.getInstance(modalElem);
+        alert("sikeres mentés")
+
 
         if (modal) {
             modal.hide();
