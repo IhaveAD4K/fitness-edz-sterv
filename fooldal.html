@@ -64,20 +64,31 @@
   <main class="">
 
     <h1 class="p-5 narancshatter">Edzések</h1>
-    <section class="container text-center d-flex justify-content-center flex-wrap gap-5 pt-3">
-      <button type="button" class="btn btn-lg gombhatter text-white ps-4 pe-4">Mind</button>
-      <button type="button" class="btn btn-lg gombhatter text-white ps-4 pe-4">Hát</button>
-      <button type="button" class="btn btn-lg gombhatter text-white ps-4 pe-4">Váll</button>
-      <button type="button" class="btn btn-lg gombhatter text-white ps-4 pe-4">Mell</button>
-      <button type="button" class="btn btn-lg gombhatter text-white ps-4 pe-4">láb</button>
-      <button type="button" class="btn btn-lg gombhatter text-white ps-4 pe-4">Kar</button>
+    <section id="myBtnContainer" class="container text-center d-flex justify-content-center flex-wrap gap-5 pt-3">
+      
+    <button type="button" class="btn btn-lg gombhatter text-white szuro-gomb active"
+        data-filter="all" onclick="filterSelection('all')">Mind</button>
+
+    <button type="button" class="btn btn-lg gombhatter text-white szuro-gomb"
+        data-filter="Hat" onclick="filterSelection('Hat')">Hát</button>
+
+    <button type="button" class="btn btn-lg gombhatter text-white szuro-gomb"
+        data-filter="Vall" onclick="filterSelection('Vall')">Váll</button>
+
+    <button type="button" class="btn btn-lg gombhatter text-white szuro-gomb"
+        data-filter="Mell" onclick="filterSelection('Mell')">Mell</button>
+
+    <button type="button" class="btn btn-lg gombhatter text-white szuro-gomb"
+        data-filter="Lab" onclick="filterSelection('Lab')">Láb</button>
+
+    <button type="button" class="btn btn-lg gombhatter text-white szuro-gomb"
+        data-filter="Kar" onclick="filterSelection('Kar')">Kar</button>
     
     </section>
 
-
     <section class="container pt-5 ">
  <div class="row g-4">
-    <div class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mx-md-0">
+    <div class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mx-md-0 filterDiv Mell" >
       <div class="card shadow h-100 p-3 bg-dark-teal">
         <img src="kep/fekvenyomas (2).png" class="card-img-top">
         <div class="card-body">
@@ -91,8 +102,8 @@
     </div>
 
 
-    <div class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mx-md-0">
-      <div class="card shadow h-100 p-3 bg-dark-teal">
+    <div class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mx-md-0 filterDiv Lab">
+      <div class="card shadow h-100 p-3 bg-dark-teal ">
         <img src="kep/guggolas.png" class="card-img-top">
         <div class="card-body">
           <h3 class="text-white text-center narancshatter p-2 rounded-3">Guggolás</h3>
@@ -104,7 +115,7 @@
       </div>
     </div>
 
-    <div class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mx-md-0">
+    <div class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mx-md-0 filterDiv Vall">
       <div class="card shadow h-100 p-3 bg-dark-teal">
         <img src="kep/vallbolnyomas.png" class="card-img-top">
         <div class="card-body">
