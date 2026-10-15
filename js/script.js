@@ -52,3 +52,16 @@ function belepes() {
         alert("Kérlek, add meg a neved!");
     }
 }
+
+let sulyCimsor = document.getElementById("weightTitle");
+
+let kgElem = document.getElementById("kg");
+let lbElem = document.getElementById("lb");
+
+kgElem.addEventListener("click", function () {
+    sulyCimsor.textContent = "Súly mértékegysége [kg]";
+});
+
+lbElem.addEventListener("click", function () {
+    sulyCimsor.textContent = "Súly mértékegysége [lbs]";
+});
