@@ -1,4 +1,5 @@
-class Gyakorlatok{
+
+class Gyakorlatok {
     #nev;
     #izomCsoport;
     #nehezseg;
@@ -7,7 +8,9 @@ class Gyakorlatok{
     #pihenoIdo;
     #suly;
 
-    constructor(nev,izomCsoport, nehezseg, szettekSzama, ismetlesekSzama, pihenoIdo, suly){
+    constructor(nev, izomCsoport, nehezseg,
+                szettekSzama, ismetlesekSzama,
+                pihenoIdo, suly) {
         this.setNev(nev);
         this.setIzomCsoport(izomCsoport);
         this.setNehezseg(nehezseg);
@@ -16,68 +19,64 @@ class Gyakorlatok{
         this.setPihenoIdo(pihenoIdo);
         this.setSuly(suly);
     }
-    setNev(nev){
+
+    setNev(nev) {
         this.#nev = nev;
     }
-    getNev(){
+
+    getNev() {
         return this.#nev;
     }
-    setIzomCsoport(izomCsoport){
+
+    setIzomCsoport(izomCsoport) {
         this.#izomCsoport = izomCsoport;
     }
-    getIzomCsoport(){
+
+    getIzomCsoport() {
         return this.#izomCsoport;
     }
-    setNehezseg(nehezseg){
+
+    setNehezseg(nehezseg) {
         this.#nehezseg = nehezseg;
     }
-    getNehezseg(){
+
+    getNehezseg() {
         return this.#nehezseg;
     }
-    setSzettekSzama(szettekSzama){
-        if(szettekSzama>150){
-            szettekSzama = 150;
-        }else{
-        this.#szettekSzama = szettekSzama;
+
+    setSzettekSzama(szam) {
+        this.#szettekSzama = Math.min(150, szam);
     }
 
-    }
-    getSzettekSzama(){
-    
+    getSzettekSzama() {
         return this.#szettekSzama;
     }
-    setIsmetlesekSzama(ismetlesekSzama){
-        if(ismetlesekSzama > 50){
-            ismetlesekSzama = 50;
-        }else{
-        this.#ismetlesekSzama = ismetlesekSzama;
+
+    setIsmetlesekSzama(szam) {
+        this.#ismetlesekSzama = Math.min(50, szam);
     }
-    }
-    getIsmetlesekSzama(ismetlesekSzama){
+
+    getIsmetlesekSzama() {
         return this.#ismetlesekSzama;
     }
-    setPihenoIdo(pihenoIdo){
-        if(pihenoIdo > 30){
-            pihenoIdo = 30;
-    }else{
-     this.#pihenoIdo = pihenoIdo;}
+
+    setPihenoIdo(ido) {
+        this.#pihenoIdo = Math.min(30, ido);
     }
-    getPihenoIdo(pihenoIdo){
+
+    getPihenoIdo() {
         return this.#pihenoIdo;
     }
 
-    setSuly(suly){
-        if(suly >300){
-            suly = 300;
-        }else{
-        this.#suly = suly;
+    setSuly(suly) {
+        this.#suly = Math.min(300, suly);
     }
 
-    }
-    getSuly(suly){
+    getSuly() {
         return this.#suly;
     }
-    toString(){
-        
+
+    toString() {
+        return this.#nev;
     }
 }
