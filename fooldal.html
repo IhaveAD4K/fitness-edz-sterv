@@ -17,7 +17,7 @@
   </head>
   <header class="nav-hatter bg-white">
     
-<body class="oldalhatter">
+
 
 
     <nav id="mySidenav" class="sidenav position-fixed top-0 start-0 h-100 overflow-hidden bg-dark-teal">
@@ -37,7 +37,7 @@
         Új gyakorlat
       </a>
 
-      <a href="#" class="nav-link text-white p-3">
+      <a href="#" class="nav-link text-white p-3" data-bs-toggle="modal" data-bs-target="#beallitasok">
         <i class="bi bi-gear me-2"></i>
         Beállítások
       </a>
@@ -61,6 +61,7 @@
 </div>
   </header>
 
+<body class="oldalhatter">
   <main class="">
 
     <h1 class="p-5 narancshatter">Edzések</h1>
@@ -103,7 +104,7 @@
 
 
     <div class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mx-md-0 filterDiv Lab">
-      <div class="card shadow h-100 p-3 bg-dark-teal ">
+      <div class="card shadow h-100 p-3 bg-dark-teal">
         <img src="kep/guggolas.png" class="card-img-top">
         <div class="card-body">
           <h3 class="text-white text-center narancshatter p-2 rounded-3">Guggolás</h3>
@@ -273,6 +274,39 @@
   </div>
 </div>
 
+<div class="modal fade " id="beallitasok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark-teal text-white">
+
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          <i class="bi bi-gear me-2"></i>Beállítások
+        </h1>
+        <button type="button" class="btn-close narancshatter" data-bs-dismiss="modal" aria-label="Bezárás"></button>
+      </div>
+
+      <div class="modal-body">
+      
+<div class="d-flex align-items-center gap-2">
+    <h5 class="mb-0">Súly mértékegysége [kg]</h5>
+
+    <div class="dropdown">
+        <button type="button"
+                class="btn btn-outline-secondary dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+        </button>
+
+        <ul class="dropdown-menu narancshatter">
+            <li><a class="dropdown-item" href="#">kg</a></li>
+            <li><a class="dropdown-item" href="#">lb</a></li>
+        </ul>
+    </div>
+</div>
+    </div>
+  </div>
+ </div>
+</div>
  <script src="JS/script.js"></script>
   </body>
 
