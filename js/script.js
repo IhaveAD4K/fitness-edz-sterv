@@ -1,3 +1,5 @@
+var profil = new Profil("Zsombor", "borkazsombor2008@gmail.com", "12345678")
+
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
 }
@@ -28,30 +30,6 @@ function filterSelection(c) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    filterSelection("all");
-});
-
-function belepes() {
-
-    let nev = document.getElementById("bejelentkezve").value;
-
-    if (nev.trim() !== "") {
-
-        document.getElementById("belepettNev").textContent = nev.trim();
-
-        let modalElem = document.getElementById("profilmodal");
-        const modal = bootstrap.Modal.getInstance(modalElem);
-        alert("sikeres mentés")
-
-
-        if (modal) {
-            modal.hide();
-        }
-    } else {
-        alert("Kérlek, add meg a neved!");
-    }
-}
 
 let sulyCimsor = document.getElementById("weightTitle");
 

@@ -54,7 +54,7 @@
     </span>
 
     <div class="text-center ms-auto pe-3">
-      <button type="button" class="btn narancshatter" data-bs-toggle="modal" data-bs-target="#profilmodal"><img width="50" height="50" class="img-fluid rounded-circle" src="kep/images.png" alt="Profilkép">
+      <button type="button" class="btn narancshatter " data-bs-toggle="modal" data-bs-target="#profilmodal" ><img width="50" height="50" class="img-fluid rounded-circle" src="kep/images.png" alt="Profilkép">
         <span class="text-white" id="belepettNev">felhasznalonev</span></button>
         
     </div>
@@ -159,10 +159,10 @@
     <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required> 
   </div>
    <div class="mb-3">
-    <label class="form-label fw-bold">Edzői megnevezés:</label>
-    <input type="text" class="form-control" id="edzoimegnevezes" aria-describedby="emailHelp required">
+    <label class="form-label fw-bold">Jelszó:</label>
+    <input type="password" required class="form-control" id="edzoimegnevezes" aria-describedby="emailHelp required">
   </div>
-  <button type="button" class="btn btn-success" onclick="belepes()">Profil mentése</button>
+  <button type="button" class="btn btn-success" onclick="profil.ellenorzes()">Profil mentése</button>
 </form>
       </div>
 
@@ -314,7 +314,8 @@
   </div>
  </div>
 </div>
- <script src="JS/script.js"></script>
+<script src="js/Profil.js"></script>
+ <script src="js/script.js"></script>
   </body>
 
 </html>
