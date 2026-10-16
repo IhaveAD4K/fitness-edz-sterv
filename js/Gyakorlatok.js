@@ -63,7 +63,7 @@ class Gyakorlatok{
      this.#pihenoIdo = pihenoIdo;}
     }
     getPihenoIdo(pihenoIdo){
-        return this.#suly;
+        return this.#pihenoIdo;
     }
 
     setSuly(suly){
