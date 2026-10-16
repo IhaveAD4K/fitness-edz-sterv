@@ -1,5 +1,3 @@
-var profil = new Profil("Zsombor", "borkazsombor2008@gmail.com", "12345678")
-
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
 }
