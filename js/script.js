@@ -7,7 +7,7 @@ function openNav() {
 function closeNav() { 
     document.getElementById("mySidenav").style.width = "0"; 
 } 
-/* 
+
 function kiir(){
     var e = document.querySelector(".e");
     e.innerHTML="";
@@ -25,12 +25,13 @@ document.querySelector(".mentes").addEventListener("click", ()=>{
     var pihenoIdo = document.querySelector(".pihenoIdo");
     var suly = document.querySelector(".suly")
     var gy = new Gyakorlatok(nev.value, izomCsoport.value, nehezseg.value, parseInt(szettekSzama).value, parseInt(ismetlesekSzama).value, parseInt(pihenoIdo).value, parseInt(suly).value);
-    edzsesek.push(gy);
-    nev.value = izomCsoport.value = nehezseg.value = parseInt(szettekSzama).value = parseInt(ismetlesekSzama).value = parseInt(pihenoIdo).value = parseInt(suly).value = "";
 
+    nev.value = izomCsoport.value = nehezseg.value = parseInt(szettekSzama).value = parseInt(ismetlesekSzama).value = parseInt(pihenoIdo).value = parseInt(suly).value = "";
+    edzsesek.push(gy);
     kiir();
+  
 });
-*/
+/*
 var nev = document.querySelector(".nev");
     var izomCsoport = document.querySelector(".izomCsoport");
     var nehezseg = document.querySelector(".nehezseg");
@@ -60,3 +61,4 @@ if(saved){
     gyakorlatokForm.innerHTML = saved;
 }
 
+*/
