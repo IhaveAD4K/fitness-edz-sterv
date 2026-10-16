@@ -9,18 +9,17 @@ class Profil{
     this.#jelszo = jelszo;
 }
     setNev(nev) {
-    console.log("Kapott név:", nev);
-    console.log("Hossz:", nev.length);
-
-    if (nev.length >= 2 && nev.length < 25) {
+    if (nev.length < 25 && nev.length > 2) {
         this.#nev = nev;
     } else {
         document.getElementById("toastSzoveg").textContent =
-            "Hibás név! 2 és 24 karakter közötti nevet adjon meg!";
+            "Hibás név! 2 és 25 karakter közé eső nevet adjon meg! ";
 
-        bootstrap.Toast.getOrCreateInstance(
+        new bootstrap.Toast(
             document.getElementById("uzenetToast")
         ).show();
+
+        return;
     }
 }
 
@@ -45,7 +44,8 @@ class Profil{
     }
     
     ellenorzes() {
-  
+    let nev = document.getElementById("bejelentkezve").value;
+    this.setNev(nev);
 }
 
 }
