@@ -1,10 +1,5 @@
-let edzsesek = [];
 
-const mentettAdatok = JSON.parse(
-    localStorage.getItem("edzsesek") || "[]"
-);
-
-edzsesek = mentettAdatok.map(adat =>
+let edzsesek = JSON.parse(localStorage.getItem("edzsesek") || "[]").map(adat =>
     new Gyakorlatok(
         adat.nev,
         adat.izomCsoport,
@@ -15,6 +10,12 @@ edzsesek = mentettAdatok.map(adat =>
         adat.suly
     )
 );
+
+const hibaElem = document.querySelector(".modalHiba");
+const sikerElem = document.querySelector(".modalSiker");
+
+const hibaModal = hibaElem ? new bootstrap.Modal(hibaElem) : null;
+const sikerModal = sikerElem ? new bootstrap.Modal(sikerElem) : null;
 
 function mentesLocalStorage() {
     const adatok = edzsesek.map(gy => ({
@@ -27,10 +28,7 @@ function mentesLocalStorage() {
         suly: gy.getSuly()
     }));
 
-    localStorage.setItem(
-        "edzsesek",
-        JSON.stringify(adatok)
-    );
+    localStorage.setItem("edzsesek", JSON.stringify(adatok));
 }
 
 function htmlBiztonsagos(szoveg) {
@@ -44,26 +42,20 @@ function htmlBiztonsagos(szoveg) {
 }
 
 function kiir() {
-    const listaidk = document.querySelector(".listaidk");
+    const lista = document.querySelector(".listaidk");
 
-    if (!listaidk) return;
+    if (!lista) return;
 
-    listaidk.innerHTML = "";
+    lista.innerHTML = "";
 
     edzsesek.forEach(gy => {
-        listaidk.innerHTML += `
+        lista.innerHTML += `
             <div class="card mb-3 p-3">
                 <h3>${htmlBiztonsagos(gy.getNev())}</h3>
-                <p>Izomcsoport:
-                    ${htmlBiztonsagos(gy.getIzomCsoport())}
-                </p>
-                <p>Nehézség:
-                    ${htmlBiztonsagos(gy.getNehezseg())}
-                </p>
+                <p>Izomcsoport: ${htmlBiztonsagos(gy.getIzomCsoport())}</p>
+                <p>Nehézség: ${htmlBiztonsagos(gy.getNehezseg())}</p>
                 <p>Szettek száma: ${gy.getSzettekSzama()}</p>
-                <p>Ismétlések száma:
-                    ${gy.getIsmetlesekSzama()}
-                </p>
+                <p>Ismétlések száma: ${gy.getIsmetlesekSzama()}</p>
                 <p>Pihenőidő: ${gy.getPihenoIdo()} perc</p>
                 <p>Súly: ${gy.getSuly()} kg</p>
             </div>
@@ -71,66 +63,53 @@ function kiir() {
     });
 }
 
-
 const mentesGomb = document.querySelector(".mentes");
 
 if (mentesGomb) {
     mentesGomb.addEventListener("click", () => {
-        const nev = document.querySelector(".nev");
-        const izomCsoport =
-            document.querySelector("#izomCsoport");
-        const nehezseg =
-            document.querySelector("#nehezseg");
-        const szettek =
-            document.querySelector("#szettek");
-        const ismetles =
-            document.querySelector("#ismetles");
-        const pihenoido =
-            document.querySelector("#pihenoido");
-        const suly = document.querySelector("#suly");
+        const nev = document.querySelector(".nev").value.trim();
+        const izom = document.querySelector("#izomCsoport").value;
+        const nehezseg = document.querySelector("#nehezseg").value;
+        const szettek = document.querySelector("#szettek").value;
+        const ismetles = document.querySelector("#ismetles").value;
+        const piheno = document.querySelector("#pihenoido").value;
+        const suly = document.querySelector("#suly").value;
 
         if (
-            !nev.value.trim() ||
-            izomCsoport.value === "válassz" ||
-            !nehezseg.value ||
-            szettek.value === "" ||
-            ismetles.value === "" ||
-            pihenoido.value === "" ||
-            suly.value === ""
+            !nev ||
+            izom === "válassz" ||
+            !nehezseg ||
+            szettek === "" ||
+            ismetles === "" ||
+            piheno === "" ||
+            suly === ""
         ) {
-            alert("Kérlek, tölts ki minden mezőt!");
+            if (hibaModal) {
+                hibaModal.show();
+            } else {
+                alert("Kérlek, tölts ki minden mezőt!");
+            }
             return;
         }
-
         const gy = new Gyakorlatok(
-            nev.value.trim(),
-            izomCsoport.value,
-            nehezseg.value,
-            Number(szettek.value),
-            Number(ismetles.value),
-            Number(pihenoido.value),
-            Number(suly.value)
+            nev,
+            izom,
+            nehezseg,
+            Number(szettek),
+            Number(ismetles),
+            Number(piheno),
+            Number(suly)
         );
-
         edzsesek.push(gy);
-
         mentesLocalStorage();
-
         kiir();
-
-        nev.value = "";
-        izomCsoport.selectedIndex = 0;
-        szettek.value = "";
-        ismetles.value = "";
-        pihenoido.value = "";
-        suly.value = "";
-
-        alert("A gyakorlat mentése sikeres!");
+        document.querySelector("form").reset();
+        if (sikerModal) {
+            sikerModal.show();
+        }
     });
 }
-
 kiir();
-
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
 }

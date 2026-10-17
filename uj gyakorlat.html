@@ -115,20 +115,43 @@
   </div>
   </center>
 
-  <div class="modal" tabindex="-1">
-  <div class="modal-dialog">
+<!-- Hiba modal -->
+<div class="modal fade modalHiba" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title">Hiányos adatok!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+          aria-label="Bezárás"></button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        Kérlek, tölts ki minden mezőt a mentés előtt!
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <a href="fooldal.html">Főoldal</a>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+          Rendben
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade modalSiker" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Sikeres mentés!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+          aria-label="Bezárás"></button>
+      </div>
+      <div class="modal-body">
+        A gyakorlat sikeresen el lett mentve!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+          Rendben
+        </button>
+        <a href="fooldal.html" class="btn btn-primary">Főoldal</a>
       </div>
     </div>
   </div>

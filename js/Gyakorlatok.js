@@ -1,3 +1,4 @@
+
 class Gyakorlatok {
     #nev;
     #izomCsoport;
@@ -76,6 +77,5 @@ class Gyakorlatok {
     }
 
     toString() {
-        return this.#nev;
     }
 }
