@@ -8,9 +8,15 @@ class Gyakorlatok {
     #pihenoIdo;
     #suly;
 
-    constructor(nev, izomCsoport, nehezseg,
-                szettekSzama, ismetlesekSzama,
-                pihenoIdo, suly) {
+    constructor(
+        nev,
+        izomCsoport,
+        nehezseg,
+        szettekSzama,
+        ismetlesekSzama,
+        pihenoIdo,
+        suly
+    ) {
         this.setNev(nev);
         this.setIzomCsoport(izomCsoport);
         this.setNehezseg(nehezseg);
@@ -45,7 +51,7 @@ class Gyakorlatok {
     }
 
     setSzettekSzama(szam) {
-        this.#szettekSzama = Math.min(150, szam);
+        this.#szettekSzama = Math.min(150, Number(szam));
     }
 
     getSzettekSzama() {
@@ -53,7 +59,7 @@ class Gyakorlatok {
     }
 
     setIsmetlesekSzama(szam) {
-        this.#ismetlesekSzama = Math.min(50, szam);
+        this.#ismetlesekSzama = Math.min(50, Number(szam));
     }
 
     getIsmetlesekSzama() {
@@ -61,7 +67,7 @@ class Gyakorlatok {
     }
 
     setPihenoIdo(ido) {
-        this.#pihenoIdo = Math.min(30, ido);
+        this.#pihenoIdo = Math.min(30, Number(ido));
     }
 
     getPihenoIdo() {
@@ -69,7 +75,7 @@ class Gyakorlatok {
     }
 
     setSuly(suly) {
-        this.#suly = Math.min(300, suly);
+        this.#suly = Math.min(300, Number(suly));
     }
 
     getSuly() {
@@ -77,5 +83,12 @@ class Gyakorlatok {
     }
 
     toString() {
+        return `Gyakorlat neve: ${this.#nev},
+Izomcsoport: ${this.#izomCsoport},
+Nehézség: ${this.#nehezseg},
+Szettek száma: ${this.#szettekSzama},
+Ismétlések száma: ${this.#ismetlesekSzama},
+Pihenőidő: ${this.#pihenoIdo} másodperc,
+Súly: ${this.#suly} kg`;
     }
 }
