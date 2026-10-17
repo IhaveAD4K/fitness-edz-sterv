@@ -1,4 +1,3 @@
-
 class Gyakorlatok {
     #nev;
     #izomCsoport;
@@ -63,7 +62,6 @@ class Gyakorlatok {
     setPihenoIdo(ido) {
         this.#pihenoIdo = Math.min(30, ido);
     }
-<<<<<<< HEAD
 
     getPihenoIdo() {
         return this.#pihenoIdo;
@@ -75,10 +73,6 @@ class Gyakorlatok {
 
     getSuly() {
         return this.#suly;
-=======
-    getPihenoIdo(pihenoIdo){
-        return this.#pihenoIdo;
->>>>>>> 2491d581c1d902f452ecb263eeda8a845982cd1e
     }
 
     toString() {
