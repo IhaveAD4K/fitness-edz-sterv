@@ -50,7 +50,7 @@ function kiir() {
 
     edzsesek.forEach(gy => {
         lista.innerHTML += `
-            <div class="card mb-3 p-3">
+            <div class="card p-3 col-2">
                 <h3>${htmlBiztonsagos(gy.getNev())}</h3>
                 <p>Izomcsoport: ${htmlBiztonsagos(gy.getIzomCsoport())}</p>
                 <p>Nehézség: ${htmlBiztonsagos(gy.getNehezseg())}</p>
