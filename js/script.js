@@ -346,7 +346,7 @@ function kiir() {
         const kartya = document.createElement("div");
 
         kartya.className =
-            "col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mx-md-0 filterDiv";
+            "col-10 col-sm-8 col-md-6 col-lg-4 pb-4 mx-auto mx-md-0 filterDiv";
 
         kartya.innerHTML = `
             <div class="card shadow h-100 p-3 bg-dark-teal">
