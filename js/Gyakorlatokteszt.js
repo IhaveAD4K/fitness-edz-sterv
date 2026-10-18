@@ -13,3 +13,5 @@ console.assert(tesztGyakorlat.getNev() === "Fekvenyomás", "Hiba: A setNev() met
 tesztGyakorlat.setPihenoIdo(100);
 
 
+tesztGyakorlat.setSuly(500);
+console.assert(tesztGyakorlat.getSuly() === 300, "Hiba: A setSuly() metódus nagyobbra állítja a súlyt mint 300 kg!");
