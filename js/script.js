@@ -143,9 +143,7 @@ function szuroKulcs(izomcsoport) {
 }
 
 function gyakorlatAdatokHTML(gy) {
-    const suly = sulyEgyseg === "lbs"
-        ? (Number(gy.getSuly()) * 2.20462).toFixed(1)
-        : gy.getSuly();
+    const suly = kgBolAtvalt(gy.getSuly());
 
     return `
         <div class="row pt-3">
@@ -261,7 +259,7 @@ if (mentesForm) {
         const szettek = Number(szettekSzoveg);
         const ismetles = Number(ismetlesSzoveg);
         const piheno = Number(pihenoSzoveg);
-        const suly = Number(sulySzoveg);
+        const suly = kgRaAtvalt(sulySzoveg);
 
         if (
             !Number.isInteger(szettek) ||
@@ -485,7 +483,7 @@ function szerkesztes(index) {
         szerkSzettek: gy.getSzettekSzama(),
         szerkIsmetles: gy.getIsmetlesekSzama(),
         szerkPiheno: gy.getPihenoIdo(),
-        szerkSuly: gy.getSuly()
+        szerkSuly: kgBolAtvalt(gy.getSuly())
     };
 
     for (const [id, ertek] of Object.entries(mezok)) {
@@ -610,7 +608,7 @@ document.getElementById("szerkesztesForm")
         const szettek = Number(szettekSzoveg);
         const ismetles = Number(ismetlesSzoveg);
         const piheno = Number(pihenoSzoveg);
-        const suly = Number(sulySzoveg);
+        const suly = kgRaAtvalt(sulySzoveg);
 
         if (
             !Number.isInteger(szettek) ||
@@ -712,5 +710,43 @@ document.getElementById("lb")?.addEventListener("click", event => {
     beallitSulyEgyseg("lbs");
 });
 
+function kgBolAtvalt(suly) {
+    if (sulyEgyseg === "lbs") {
+        return (Number(suly) * 2.20462).toFixed(1);
+    }
+
+    return Number(suly).toString();
+}
+
+function kgRaAtvalt(suly) {
+    if (sulyEgyseg === "lbs") {
+        return Number(suly) / 2.20462;
+    }
+
+    return Number(suly);
+}
+
+function sulyMezokFrissitese(regiEgyseg, ujEgyseg) {
+    const mezok = [
+        document.getElementById("suly"),
+        document.getElementById("szerkSuly")
+    ];
+
+    mezok.forEach(mező => {
+        if (mező && mező.value !== "") {
+            let suly = Number(mező.value);
+
+            if (regiEgyseg === "kg" && ujEgyseg === "lbs") {
+                suly = suly * 2.20462;
+            } else if (regiEgyseg === "lbs" && ujEgyseg === "kg") {
+                suly = suly / 2.20462;
+            }
+
+            mező.value = Number(suly.toFixed(1));
+        }
+    });
+}
+
 beallitSulyEgyseg(sulyEgyseg);
 kiir();
+
