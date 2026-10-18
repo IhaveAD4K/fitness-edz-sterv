@@ -73,7 +73,6 @@ main {
     align-items: center;
 }
 
-/* Az új gyakorlat űrlapjának középre igazítása */
 .gyakorlat-urlap-tarto {
     width: 100%;
     display: flex;
