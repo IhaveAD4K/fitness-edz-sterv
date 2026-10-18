@@ -56,7 +56,6 @@ background-color: #123d46 !important;
     pointer-events: none;
 }
 
-/* Kapcsoló */
 .toggle {
     display: flex;
     align-items: center;
@@ -71,7 +70,6 @@ background-color: #123d46 !important;
     transition: 0.3s;
 }
 
-/* Kapcsoló gombja */
 .toggle-circle {
     width: 46px;
     height: 25px;
@@ -93,7 +91,6 @@ background-color: #123d46 !important;
     transition: 0.3s;
 }
 
-/* Bekapcsolt kapcsoló */
 .dark-toggle:checked + .toggle {
     background-color: #123b3b;
     color: white;
@@ -107,18 +104,15 @@ background-color: #123d46 !important;
     transform: translateX(21px);
 }
 
-/* Billentyűzetes használat */
 .dark-toggle:focus-visible + .toggle {
     outline: 2px solid #f39c12;
 }
 
-/* Sötét mód: az oldal háttere */
 body:has(#dark-mode-toggle:checked) {
     background-color: #181818 !important;
     color: white;
 }
 
-/* Kártyák, fejléc, navigáció és modalok */
 body:has(#dark-mode-toggle:checked) .card,
 body:has(#dark-mode-toggle:checked) #main,
 body:has(#dark-mode-toggle:checked) .sidenav,
@@ -127,7 +121,6 @@ body:has(#dark-mode-toggle:checked) .modal-content {
     color: white !important;
 }
 
-/* Fehér hátterek */
 body:has(#dark-mode-toggle:checked) .bg-white,
 body:has(#dark-mode-toggle:checked) .btn-light {
     background-color: #292929 !important;
@@ -135,10 +128,23 @@ body:has(#dark-mode-toggle:checked) .btn-light {
     border-color: #555;
 }
 
-/* Beviteli mezők */
 body:has(#dark-mode-toggle:checked) .form-control,
 body:has(#dark-mode-toggle:checked) .form-select {
     background-color: #292929;
     color: white;
     border-color: #555;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+    background-color: #183b3b;
+    color: white;
+    padding: 25px 0;
 }
