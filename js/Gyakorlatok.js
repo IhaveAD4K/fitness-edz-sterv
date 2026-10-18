@@ -30,7 +30,7 @@ class Gyakorlatok {
         this.#nev = nev;
     }
 
-    getNev() {
+    get Nev() {
         return this.#nev;
     }
 
