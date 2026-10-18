@@ -151,4 +151,19 @@ footer {
 .formszoveg{
     color: #ebebeb;
 }
-    
+.mentes{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.kartya-kozep {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.kartya-kozep .card {
+    width: 85%;
+    margin: 0 auto;
+    float: none;
+}
