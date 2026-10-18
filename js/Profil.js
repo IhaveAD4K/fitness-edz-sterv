@@ -46,9 +46,12 @@ class Profil {
     }
 
 
+
     mutatUzenet(szoveg, sikeres = false) {
         let toastElem = document.querySelector("#uzenetToast");
-        document.querySelector("#toastSzoveg").textContent = szoveg;
+        let toastSzoveg = document.querySelector("#toastSzoveg");
+
+        toastSzoveg.textContent = szoveg;
 
         if (sikeres) {
             toastElem.classList.remove("text-bg-danger");
@@ -58,16 +61,16 @@ class Profil {
             toastElem.classList.add("text-bg-danger");
         }
 
-        new bootstrap.Toast(toastElem).show();
+        let toast = bootstrap.Toast.getOrCreateInstance(toastElem);
+        toast.show();
     }
 
 
-    ellenorzes() {
 
+    ellenorzes() {
         let urlapNev = document.querySelector("#bejelentkezve").value;
         let urlapEmail = document.querySelector("#email").value;
         let urlapJelszo = document.querySelector("#edzoimegnevezes").value;
-
 
         if (this.setNev(urlapNev) === false) {
             this.mutatUzenet("A név 3 és 24 karakter közötti legyen!");
@@ -79,20 +82,19 @@ class Profil {
             return;
         }
 
-
         if (this.setJelszo(urlapJelszo) === false) {
             this.mutatUzenet("A jelszó legalább 8 karakter legyen!");
             return;
         }
 
+        document.querySelector("#belepettNev").textContent = this.getNev();
 
+        let modalElem = document.querySelector("#profilmodal");
+        let modal = bootstrap.Modal.getInstance(modalElem);
 
-        document.querySelector("#belepettNev").textContent = this.#nev;
-
-        bootstrap.Modal.getInstance(
-            document.querySelector("#profilmodal")
-        ).hide();
-
+        if (modal) {
+            modal.hide();
+        }
 
         this.mutatUzenet("Sikeres mentés!", true);
     }
