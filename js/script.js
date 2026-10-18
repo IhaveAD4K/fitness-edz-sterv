@@ -682,12 +682,14 @@ if (profilNev && profilNevElem) {
     profilNevElem.textContent = profilNev;
 }
 
+
 function beallitSulyEgyseg(egyseg) {
     sulyEgyseg = egyseg;
     localStorage.setItem("sulyEgyseg", egyseg);
 
     const gomb = document.getElementById("sulyEgysegGomb");
     const cim = document.getElementById("weightTitle");
+    const sulyLabel = document.getElementById("sulyLabel");
 
     if (gomb) {
         gomb.textContent = egyseg;
@@ -697,8 +699,13 @@ function beallitSulyEgyseg(egyseg) {
         cim.textContent = `Súly mértékegysége [${egyseg}]`;
     }
 
+    if (sulyLabel) {
+        sulyLabel.textContent = `Súly (${egyseg})`;
+    }
+
     kiir();
 }
+
 
 document.getElementById("kg")?.addEventListener("click", event => {
     event.preventDefault();
