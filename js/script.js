@@ -90,14 +90,28 @@ function mentesLocalStorage() {
 
 function kepUtvonal(gy) {
     const izom = String(gy.getIzomCsoport() || "")
+        .toLocaleLowerCase("hu")
         .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toLowerCase()
-        .trim();
+        .replace(/[\u0300-\u036f]/g, "");
 
-    return `kep/${izom}.png`;
+    if (izom.includes("kar") || izom.includes("mell")) {
+        return "kep/fekvenyomas.png";
+    }
+
+    if (izom.includes("lab")) {
+        return "kep/guggolas.png";
+    }
+
+    if (izom.includes("hat")) {
+        return "kep/rudasevezés.png";
+    }
+
+    if (izom.includes("vall")) {
+        return "kep/vallbolnyomas.png";
+    }
+
+    return "kep/fekvenyomas.png";
 }
-
 function szuroKulcs(izomcsoport) {
     const izom = String(izomcsoport || "")
         .normalize("NFD")
