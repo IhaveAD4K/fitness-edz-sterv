@@ -93,7 +93,7 @@ Pihenőidő: ${this.#pihenoIdo} másodperc,
 Súly: ${this.#suly} kg`;
     }
 }
-=======
+
 class Gyakorlatok {
     #nev;
     #izomCsoport;
