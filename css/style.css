@@ -1,4 +1,19 @@
 
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Nunito", sans-serif;
+}
+
+main {
+    flex: 1;
+}
+
 .bg-dark-teal {
     background-color: #123d46 !important;
 }
@@ -21,42 +36,87 @@
     transition: background-color 0.3s;
 }
 
-.sidenav a:hover  {
+.sidenav a:hover {
     background-color: #F54927;
 }
 
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
+.nevhatter {
+    color: #F54927;
+}
 
-    .sidenav a {
-        font-size: 1rem;
-    }
+.oldalhatter {
+    background-color: #ebebeb;
 }
-.nevhatter{
-  color: #F54927;
+
+.gombhatter {
+    background-color: #123d46 !important;
 }
-.oldalhatter{
-  background-color: #ebebeb;
+
+.gombhatter:hover {
+    background-color: #F54927 !important;
 }
-.gombhatter{
-background-color: #123d46 !important;
-}
-.gombhatter:hover  {
-    background-color: #F54927 !important; 
-}
-.narancshatter{
+
+.narancshatter {
     background-color: #F54927 !important;
     color: #ebebeb !important;
 }
+
+.formszoveg {
+    color: #ebebeb;
+    display: block;
+    text-align: left;
+}
+
+.mentes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Az új gyakorlat űrlapjának középre igazítása */
+.gyakorlat-urlap-tarto {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 16px 40px;
+}
+
+.gyakorlat-urlap-kartya {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 16px;
+}
+
+.gyakorlat-urlap-kartya .form-control,
+.gyakorlat-urlap-kartya .form-select {
+    min-height: 44px;
+}
+
+.gyakorlat-urlap-kartya .btn-success {
+    min-width: 160px;
+}
+
+.kartya-kozep {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.kartya-kozep .card {
+    width: 85%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
 .dark-toggle {
     position: absolute;
     opacity: 0;
     pointer-events: none;
 }
 
-/* Kapcsoló */
 .toggle {
     display: flex;
     align-items: center;
@@ -71,7 +131,6 @@ background-color: #123d46 !important;
     transition: 0.3s;
 }
 
-/* Kapcsoló gombja */
 .toggle-circle {
     width: 46px;
     height: 25px;
@@ -93,7 +152,6 @@ background-color: #123d46 !important;
     transition: 0.3s;
 }
 
-/* Bekapcsolt kapcsoló */
 .dark-toggle:checked + .toggle {
     background-color: #123b3b;
     color: white;
@@ -107,18 +165,15 @@ background-color: #123d46 !important;
     transform: translateX(21px);
 }
 
-/* Billentyűzetes használat */
 .dark-toggle:focus-visible + .toggle {
     outline: 2px solid #f39c12;
 }
 
-/* Sötét mód: az oldal háttere */
 body:has(#dark-mode-toggle:checked) {
     background-color: #181818 !important;
     color: white;
 }
 
-/* Kártyák, fejléc, navigáció és modalok */
 body:has(#dark-mode-toggle:checked) .card,
 body:has(#dark-mode-toggle:checked) #main,
 body:has(#dark-mode-toggle:checked) .sidenav,
@@ -127,7 +182,6 @@ body:has(#dark-mode-toggle:checked) .modal-content {
     color: white !important;
 }
 
-/* Fehér hátterek */
 body:has(#dark-mode-toggle:checked) .bg-white,
 body:has(#dark-mode-toggle:checked) .btn-light {
     background-color: #292929 !important;
@@ -135,18 +189,11 @@ body:has(#dark-mode-toggle:checked) .btn-light {
     border-color: #555;
 }
 
-/* Beviteli mezők */
 body:has(#dark-mode-toggle:checked) .form-control,
 body:has(#dark-mode-toggle:checked) .form-select {
     background-color: #292929;
     color: white;
     border-color: #555;
-}
-
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
 footer {
@@ -156,22 +203,28 @@ footer {
     color: white;
     padding: 25px 0;
 }
-.formszoveg{
-    color: #ebebeb;
-}
-.mentes{
-    display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.kartya-kozep {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 1rem;
+    }
 }
 
-.kartya-kozep .card {
-    width: 85%;
-    margin: 0 auto;
-    float: none;
+@media (max-width: 576px) {
+    .gyakorlat-urlap-tarto {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .gyakorlat-urlap-kartya .card-body {
+        padding: 20px !important;
+    }
+
+    main h1 {
+        font-size: 1.8rem;
+    }
 }

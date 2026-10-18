@@ -1,39 +1,69 @@
-let edzsesek = JSON.parse(localStorage.getItem("edzsesek") || "[]").map(adat =>
-    new Gyakorlatok(
-        adat.nev,
-        adat.izomCsoport,
-        adat.nehezseg,
-        adat.szettekSzama,
-        adat.ismetlesekSzama,
-        adat.pihenoIdo,
-        adat.suly
-    )
-);
+let edzsesek = [];
+
+try {
+    const taroltAdatok = JSON.parse(
+        localStorage.getItem("edzsesek") || "[]"
+    );
+
+    if (Array.isArray(taroltAdatok)) {
+        edzsesek = taroltAdatok.map(adat =>
+            new Gyakorlatok(
+                adat.nev,
+                adat.izomCsoport,
+                adat.nehezseg,
+                adat.szettekSzama,
+                adat.ismetlesekSzama,
+                adat.pihenoIdo,
+                adat.suly
+            )
+        );
+    }
+} catch (hiba) {
+    console.error("Nem sikerült betölteni a gyakorlatokat:", hiba);
+    edzsesek = [];
+}
+
 let aktualisIndex = -1;
 let torlendoIndex = -1;
 let aktivSzuro = "all";
 let sulyEgyseg = localStorage.getItem("sulyEgyseg") || "kg";
+
 function modalUzenet(cim, uzenet, fooldalGombLatszik = false) {
     const modalElem = document.getElementById("uzenetModal");
+
     if (!modalElem) {
-        console.error("Nem található az uzenetModal elem a HTML-ben.");
+        alert(cim + "\n\n" + uzenet);
         return;
     }
+
     const cimElem = document.getElementById("uzenetCim");
     const szovegElem = document.getElementById("uzenetSzoveg");
     const fooldalGomb = document.getElementById("fooldalGomb");
+
     if (cimElem) {
         cimElem.textContent = cim;
     }
+
     if (szovegElem) {
         szovegElem.textContent = uzenet;
     }
+
     if (fooldalGomb) {
-        fooldalGomb.style.display = fooldalGombLatszik ? "" : "none";
+        fooldalGomb.classList.toggle(
+            "d-none",
+            !fooldalGombLatszik
+        );
+
         fooldalGomb.href = "fooldal.html";
     }
-    bootstrap.Modal.getOrCreateInstance(modalElem).show();
+
+    if (typeof bootstrap !== "undefined") {
+        bootstrap.Modal.getOrCreateInstance(modalElem).show();
+    } else {
+        alert(cim + "\n\n" + uzenet);
+    }
 }
+
 function htmlBiztonsagos(szoveg) {
     return String(szoveg ?? "").replace(/[&<>"']/g, karakter => ({
         "&": "&amp;",
@@ -43,6 +73,7 @@ function htmlBiztonsagos(szoveg) {
         "'": "&#39;"
     })[karakter]);
 }
+
 function mentesLocalStorage() {
     const adatok = edzsesek.map(gy => ({
         nev: gy.getNev(),
@@ -53,46 +84,50 @@ function mentesLocalStorage() {
         pihenoIdo: gy.getPihenoIdo(),
         suly: gy.getSuly()
     }));
+
     localStorage.setItem("edzsesek", JSON.stringify(adatok));
 }
+
 function kepUtvonal(gy) {
     const izom = String(gy.getIzomCsoport() || "")
-        .toLocaleLowerCase("hu")
         .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
-    if (izom.includes("kar") || izom.includes("mell")) {
-        return "kep/fekvenyomas.png";
-    }
-    if (izom.includes("lab")) {
-        return "kep/guggolas.png";
-    }
-    if (izom.includes("hat")) {
-        return "kep/rudasevezés.png";
-    }
-    if (izom.includes("vall")) {
-        return "kep/vallbolnyomas.png";
-    }
-    return "kep/images.png";
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim();
+
+    return `kep/${izom}.png`;
 }
+
 function szuroKulcs(izomcsoport) {
-    const izom = String(izomcsoport || "").toLocaleLowerCase("hu");
-    if (izom.includes("hát") || izom.includes("hat")) {
+    const izom = String(izomcsoport || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim();
+
+    if (izom === "hat") {
         return "Hat";
     }
-    if (izom.includes("váll") || izom.includes("vall")) {
+
+    if (izom === "vall") {
         return "Vall";
     }
-    if (izom.includes("mell")) {
+
+    if (izom === "mell") {
         return "Mell";
     }
-    if (izom.includes("láb") || izom.includes("lab")) {
+
+    if (izom === "lab") {
         return "Lab";
     }
-    if (izom.includes("kar")) {
+
+    if (izom === "kar") {
         return "Kar";
     }
+
     return "Egyeb";
 }
+
 function gyakorlatAdatokHTML(gy) {
     const suly = sulyEgyseg === "lbs"
         ? (Number(gy.getSuly()) * 2.20462).toFixed(1)
@@ -100,7 +135,6 @@ function gyakorlatAdatokHTML(gy) {
 
     return `
         <div class="row pt-3">
-
             <div class="col-6">
                 <h5>Izomcsoport:</h5>
                 <p class="ps-3 narancshatter">
@@ -142,10 +176,123 @@ function gyakorlatAdatokHTML(gy) {
                     ${suly}
                 </p>
             </div>
-
         </div>
     `;
 }
+
+const mentesForm = document.getElementById("ujGyakorlatForm");
+
+if (mentesForm) {
+    mentesForm.addEventListener("submit", event => {
+        event.preventDefault();
+
+        const nevElem = document.querySelector(".nev");
+        const izomElem = document.getElementById("izomCsoport");
+        const nehezsegElem = document.getElementById("nehezseg");
+        const szettekElem = document.getElementById("szettek");
+        const ismetlesElem = document.getElementById("ismetles");
+        const pihenoElem = document.getElementById("pihenoido");
+        const sulyElem = document.getElementById("suly");
+
+        if (
+            !nevElem ||
+            !izomElem ||
+            !nehezsegElem ||
+            !szettekElem ||
+            !ismetlesElem ||
+            !pihenoElem ||
+            !sulyElem
+        ) {
+            console.error(
+                "Hiányzó HTML-mező. Ellenőrizd az űrlap elemeinek ID-it."
+            );
+
+            modalUzenet(
+                "Hiba",
+                "Az űrlap egyik mezője nem található. Ellenőrizd a HTML-ben az ID-ket."
+            );
+
+            return;
+        }
+
+        const nev = nevElem.value.trim();
+        const izom = izomElem.value;
+        const nehezseg = nehezsegElem.value;
+        const szettekSzoveg = szettekElem.value;
+        const ismetlesSzoveg = ismetlesElem.value;
+        const pihenoSzoveg = pihenoElem.value;
+        const sulySzoveg = sulyElem.value;
+
+        if (
+            !nev ||
+            !izom ||
+            izom.toLowerCase() === "válassz" ||
+            izom.toLowerCase() === "valassz" ||
+            !nehezseg ||
+            nehezseg.toLowerCase() === "válassz" ||
+            nehezseg.toLowerCase() === "valassz" ||
+            szettekSzoveg === "" ||
+            ismetlesSzoveg === "" ||
+            pihenoSzoveg === "" ||
+            sulySzoveg === ""
+        ) {
+            modalUzenet(
+                "Hiányzó adatok",
+                "Kérlek, tölts ki minden mezőt a mentés előtt!"
+            );
+
+            return;
+        }
+
+        const szettek = Number(szettekSzoveg);
+        const ismetles = Number(ismetlesSzoveg);
+        const piheno = Number(pihenoSzoveg);
+        const suly = Number(sulySzoveg);
+
+        if (
+            !Number.isInteger(szettek) ||
+            szettek < 1 ||
+            szettek > 150 ||
+            !Number.isInteger(ismetles) ||
+            ismetles < 1 ||
+            ismetles > 50 ||
+            !Number.isInteger(piheno) ||
+            piheno < 0 ||
+            piheno > 30 ||
+            !Number.isFinite(suly) ||
+            suly < 0 ||
+            suly > 300
+        ) {
+            modalUzenet(
+                "Hibás adatok",
+                "Szettek: 1–150, ismétlések: 1–50, pihenő: 0–30 másodperc, súly: 0–300 kg."
+            );
+
+            return;
+        }
+
+        const gyakorlat = new Gyakorlatok(
+            nev,
+            izom,
+            nehezseg,
+            szettek,
+            ismetles,
+            piheno,
+            suly
+        );
+
+        edzsesek.push(gyakorlat);
+        mentesLocalStorage();
+        mentesForm.reset();
+
+        modalUzenet(
+            "Sikeres mentés!",
+            "A gyakorlat el lett mentve. A főoldalon megtekintheted.",
+            true
+        );
+    });
+}
+
 function kiir() {
     const lista = document.getElementById("gyakorlatLista");
     const uresLista = document.getElementById("uresLista");
@@ -153,19 +300,26 @@ function kiir() {
     if (!lista) {
         return;
     }
+
     lista.innerHTML = "";
+
     const szurtGyakorlatok = edzsesek
         .map((gy, index) => ({ gy, index }))
         .filter(({ gy }) =>
             aktivSzuro === "all" ||
             szuroKulcs(gy.getIzomCsoport()) === aktivSzuro
         );
+
     if (uresLista) {
         uresLista.classList.toggle(
             "d-none",
             szurtGyakorlatok.length !== 0
         );
-        if (szurtGyakorlatok.length === 0 && aktivSzuro !== "all") {
+
+        if (
+            szurtGyakorlatok.length === 0 &&
+            aktivSzuro !== "all"
+        ) {
             uresLista.textContent =
                 "Nincs gyakorlat ebben az izomcsoportban.";
         } else {
@@ -173,13 +327,15 @@ function kiir() {
                 "Még nincs elmentett gyakorlatod. Adj hozzá egyet az Új gyakorlat oldalon!";
         }
     }
+
     szurtGyakorlatok.forEach(({ gy, index }) => {
         const kartya = document.createElement("div");
+
         kartya.className =
             "col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mx-md-0 filterDiv";
+
         kartya.innerHTML = `
             <div class="card shadow h-100 p-3 bg-dark-teal">
-
                 <img
                     src="${htmlBiztonsagos(kepUtvonal(gy))}"
                     class="card-img-top"
@@ -193,7 +349,6 @@ function kiir() {
                 </div>
 
                 <div class="d-flex gap-2 flex-wrap">
-
                     <button
                         type="button"
                         class="btn btn-light flex-fill"
@@ -217,15 +372,14 @@ function kiir() {
                         data-index="${index}">
                         <i class="bi bi-trash"></i> Törlés
                     </button>
-
                 </div>
-
             </div>
         `;
 
         lista.appendChild(kartya);
     });
 }
+
 function filterSelection(filter) {
     aktivSzuro = filter;
 
@@ -238,18 +392,27 @@ function filterSelection(filter) {
 
     kiir();
 }
+
 function megtekintes(index) {
     const gy = edzsesek[index];
 
     if (!gy) {
         return;
     }
+
+    const cimElem = document.getElementById("megtekintesCim");
+    const tartalomElem = document.getElementById("megtekintesTartalom");
+    const modalElem = document.getElementById("megtekintes");
+
+    if (!cimElem || !tartalomElem || !modalElem) {
+        console.error("A megtekintéshez szükséges modal nem található.");
+        return;
+    }
+
     aktualisIndex = index;
+    cimElem.textContent = gy.getNev();
 
-    document.getElementById("megtekintesCim").textContent =
-        gy.getNev();
-
-    document.getElementById("megtekintesTartalom").innerHTML = `
+    tartalomElem.innerHTML = `
         <img
             src="${htmlBiztonsagos(kepUtvonal(gy))}"
             class="card-img-top"
@@ -270,59 +433,76 @@ function megtekintes(index) {
         </button>
     `;
 
-    document.getElementById("megtekintesSzerkeszt")
+    document
+        .getElementById("megtekintesSzerkeszt")
         .addEventListener("click", () => {
             bootstrap.Modal
-                .getOrCreateInstance(
-                    document.getElementById("megtekintes")
-                )
+                .getOrCreateInstance(modalElem)
                 .hide();
 
             szerkesztes(aktualisIndex);
         });
 
     bootstrap.Modal
-        .getOrCreateInstance(document.getElementById("megtekintes"))
+        .getOrCreateInstance(modalElem)
         .show();
 }
+
 function szerkesztes(index) {
     const gy = edzsesek[index];
 
     if (!gy) {
         return;
     }
+
+    const modalElem = document.getElementById("szerkesztes");
+
+    if (!modalElem) {
+        console.error("A szerkesztés modal nem található.");
+        return;
+    }
+
     aktualisIndex = index;
-    document.getElementById("szerkNev").value =
-        gy.getNev();
 
-    document.getElementById("szerkIzom").value =
-        gy.getIzomCsoport();
+    const mezok = {
+        szerkNev: gy.getNev(),
+        szerkIzom: gy.getIzomCsoport(),
+        szerkNehezseg: gy.getNehezseg(),
+        szerkSzettek: gy.getSzettekSzama(),
+        szerkIsmetles: gy.getIsmetlesekSzama(),
+        szerkPiheno: gy.getPihenoIdo(),
+        szerkSuly: gy.getSuly()
+    };
 
-    document.getElementById("szerkNehezseg").value =
-        gy.getNehezseg();
+    for (const [id, ertek] of Object.entries(mezok)) {
+        const elem = document.getElementById(id);
 
-    document.getElementById("szerkSzettek").value =
-        gy.getSzettekSzama();
-
-    document.getElementById("szerkIsmetles").value =
-        gy.getIsmetlesekSzama();
-
-    document.getElementById("szerkPiheno").value =
-        gy.getPihenoIdo();
-
-    document.getElementById("szerkSuly").value =
-        gy.getSuly();
+        if (elem) {
+            elem.value = ertek;
+        }
+    }
 
     bootstrap.Modal
-        .getOrCreateInstance(document.getElementById("szerkesztes"))
+        .getOrCreateInstance(modalElem)
         .show();
 }
 
 function torles(index) {
+    if (!edzsesek[index]) {
+        return;
+    }
+
+    const modalElem = document.getElementById("torlesModal");
+
+    if (!modalElem) {
+        console.error("A törlés modal nem található.");
+        return;
+    }
+
     torlendoIndex = index;
 
     bootstrap.Modal
-        .getOrCreateInstance(document.getElementById("torlesModal"))
+        .getOrCreateInstance(modalElem)
         .show();
 }
 
@@ -338,13 +518,9 @@ document.getElementById("gyakorlatLista")
 
         if (gomb.dataset.muvelet === "megtekintes") {
             megtekintes(index);
-        }
-
-        if (gomb.dataset.muvelet === "szerkesztes") {
+        } else if (gomb.dataset.muvelet === "szerkesztes") {
             szerkesztes(index);
-        }
-
-        if (gomb.dataset.muvelet === "torles") {
+        } else if (gomb.dataset.muvelet === "torles") {
             torles(index);
         }
     });
@@ -359,23 +535,28 @@ document.getElementById("torlesMegerosit")
         }
 
         edzsesek.splice(torlendoIndex, 1);
-
         mentesLocalStorage();
 
         torlendoIndex = -1;
-
         kiir();
 
-        bootstrap.Modal
-            .getOrCreateInstance(document.getElementById("torlesModal"))
-            .hide();
+        const modalElem = document.getElementById("torlesModal");
+
+        if (modalElem) {
+            bootstrap.Modal
+                .getOrCreateInstance(modalElem)
+                .hide();
+        }
     });
 
 document.getElementById("szerkesztesForm")
     ?.addEventListener("submit", event => {
         event.preventDefault();
 
-        if (aktualisIndex < 0 || !edzsesek[aktualisIndex]) {
+        if (
+            aktualisIndex < 0 ||
+            !edzsesek[aktualisIndex]
+        ) {
             return;
         }
 
@@ -383,38 +564,59 @@ document.getElementById("szerkesztesForm")
         const izom = document.getElementById("szerkIzom").value;
         const nehezseg = document.getElementById("szerkNehezseg").value;
 
-        const szettek = Number(
-            document.getElementById("szerkSzettek").value
-        );
+        const szettekSzoveg =
+            document.getElementById("szerkSzettek").value;
 
-        const ismetles = Number(
-            document.getElementById("szerkIsmetles").value
-        );
+        const ismetlesSzoveg =
+            document.getElementById("szerkIsmetles").value;
 
-        const piheno = Number(
-            document.getElementById("szerkPiheno").value
-        );
+        const pihenoSzoveg =
+            document.getElementById("szerkPiheno").value;
 
-        const suly = Number(
-            document.getElementById("szerkSuly").value
-        );
+        const sulySzoveg =
+            document.getElementById("szerkSuly").value;
+
         if (
             !nev ||
             !izom ||
             !nehezseg ||
-            !Number.isFinite(szettek) ||
-            szettek < 0 || szettek > 150 ||
-            !Number.isFinite(ismetles) ||
-            ismetles < 0 || ismetles > 50 ||
-            !Number.isFinite(piheno) ||
-            piheno < 0 || piheno > 30 ||
+            szettekSzoveg === "" ||
+            ismetlesSzoveg === "" ||
+            pihenoSzoveg === "" ||
+            sulySzoveg === ""
+        ) {
+            modalUzenet(
+                "Hiányzó adatok",
+                "Kérlek, tölts ki minden mezőt!"
+            );
+
+            return;
+        }
+
+        const szettek = Number(szettekSzoveg);
+        const ismetles = Number(ismetlesSzoveg);
+        const piheno = Number(pihenoSzoveg);
+        const suly = Number(sulySzoveg);
+
+        if (
+            !Number.isInteger(szettek) ||
+            szettek < 1 ||
+            szettek > 150 ||
+            !Number.isInteger(ismetles) ||
+            ismetles < 1 ||
+            ismetles > 50 ||
+            !Number.isInteger(piheno) ||
+            piheno < 0 ||
+            piheno > 30 ||
             !Number.isFinite(suly) ||
-            suly < 0 || suly > 300
+            suly < 0 ||
+            suly > 300
         ) {
             modalUzenet(
                 "Hibás adatok",
-                "Ellenőrizd a mezőket és a megengedett számértékeket!"
+                "Szettek: 1–150, ismétlések: 1–50, pihenő: 0–30 másodperc, súly: 0–300 kg."
             );
+
             return;
         }
 
@@ -431,103 +633,20 @@ document.getElementById("szerkesztesForm")
         mentesLocalStorage();
         kiir();
 
-        bootstrap.Modal
-            .getOrCreateInstance(document.getElementById("szerkesztes"))
-            .hide();
+        const modalElem = document.getElementById("szerkesztes");
+
+        if (modalElem) {
+            bootstrap.Modal
+                .getOrCreateInstance(modalElem)
+                .hide();
+        }
 
         modalUzenet(
             "Sikeres módosítás",
             "A gyakorlat adatai sikeresen módosultak."
         );
     });
-const mentesGomb = document.querySelector(".mentes");
 
-if (mentesGomb) {
-    mentesGomb.addEventListener("click", event => {
-        event.preventDefault();
-
-        const form = document.querySelector("form");
-
-        const nev =
-            document.querySelector(".nev")?.value.trim() || "";
-
-        const izom =
-            document.querySelector("#izomCsoport")?.value || "";
-
-        const nehezseg =
-            document.querySelector("#nehezseg")?.value || "";
-
-        const szettek =
-            document.querySelector("#szettek")?.value ?? "";
-
-        const ismetles =
-            document.querySelector("#ismetles")?.value ?? "";
-
-        const piheno =
-            document.querySelector("#pihenoido")?.value ?? "";
-
-        const suly =
-            document.querySelector("#suly")?.value ?? "";
-
-        if (
-            !nev ||
-            !izom ||
-            izom.toLowerCase() === "válassz" ||
-            !nehezseg ||
-            szettek === "" ||
-            ismetles === "" ||
-            piheno === "" ||
-            suly === ""
-        ) {
-            modalUzenet(
-                "Hiányzó adatok",
-                "Kérlek, tölts ki minden mezőt!"
-            );
-            return;
-        }
-        const szamok = [
-            Number(szettek),
-            Number(ismetles),
-            Number(piheno),
-            Number(suly)
-        ];
-
-        if (
-            szamok.some(szam => !Number.isFinite(szam) || szam < 0) ||
-            szamok[0] > 150 ||
-            szamok[1] > 50 ||
-            szamok[2] > 30 ||
-            szamok[3] > 300
-        ) {
-            modalUzenet(
-                "Hibás számértékek",
-                "Ellenőrizd a számokat! Maximum: 150 szett, 50 ismétlés, 30 másodperc pihenő és 300 kg."
-            );
-            return;
-        }
-
-        const gy = new Gyakorlatok(
-            nev,
-            izom,
-            nehezseg,
-            szamok[0],
-            szamok[1],
-            szamok[2],
-            szamok[3]
-        );
-        edzsesek.push(gy);
-        mentesLocalStorage();
-
-        if (form) {
-            form.reset();
-        }
-        modalUzenet(
-            "Sikeres mentés",
-            "A gyakorlat sikeresen mentve! A főoldalon megtekintheted az elmentett gyakorlatot.",
-            true
-        );
-    });
-}
 function openNav() {
     const nav = document.getElementById("mySidenav");
 
@@ -535,6 +654,7 @@ function openNav() {
         nav.style.width = "250px";
     }
 }
+
 function closeNav() {
     const nav = document.getElementById("mySidenav");
 
@@ -542,15 +662,21 @@ function closeNav() {
         nav.style.width = "0";
     }
 }
+
 const profilNev = localStorage.getItem("belepettNev");
-if (profilNev && document.getElementById("belepettNev")) {
-    document.getElementById("belepettNev").textContent = profilNev;
+const profilNevElem = document.getElementById("belepettNev");
+
+if (profilNev && profilNevElem) {
+    profilNevElem.textContent = profilNev;
 }
+
 function beallitSulyEgyseg(egyseg) {
     sulyEgyseg = egyseg;
     localStorage.setItem("sulyEgyseg", egyseg);
+
     const gomb = document.getElementById("sulyEgysegGomb");
     const cim = document.getElementById("weightTitle");
+
     if (gomb) {
         gomb.textContent = egyseg;
     }
@@ -561,13 +687,16 @@ function beallitSulyEgyseg(egyseg) {
 
     kiir();
 }
+
 document.getElementById("kg")?.addEventListener("click", event => {
     event.preventDefault();
     beallitSulyEgyseg("kg");
 });
+
 document.getElementById("lb")?.addEventListener("click", event => {
     event.preventDefault();
     beallitSulyEgyseg("lbs");
 });
+
 beallitSulyEgyseg(sulyEgyseg);
 kiir();
