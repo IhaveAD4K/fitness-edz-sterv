@@ -1,104 +1,414 @@
 <!DOCTYPE html>
-<html>
+<html lang="hu">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
-  <script src="JS/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="CSS/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-    crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
-  <header class="nav-hatter bg-white">
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FitTracker – Edzések</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
 <body class="oldalhatter">
 
+    <header class="nav-hatter bg-white">
+        <nav id="mySidenav" class="sidenav position-fixed top-0 start-0 h-100 overflow-hidden bg-dark-teal">
 
-    <nav id="mySidenav" class="sidenav position-fixed top-0 start-0 h-100 overflow-hidden bg-dark-teal">
-      
-      <button type="button" class="btn text-white fs-2 position-absolute top-0 end-0 me-2" onclick="closeNav()"
-        aria-label="Menü bezárása"><span class="fs-4 nevhatter fw-bold pe-5 text-start"><span class="fs-4 text-white">Fit</span>Tracker</span>
-        &times;
-      </button>
+            <button type="button"
+                class="btn text-white fs-2 position-absolute top-0 end-0 me-2"
+                onclick="closeNav()" aria-label="Menü bezárása">
 
-      <a href="fooldal.html" class="nav-link text-white p-3">
-        <i class="bi bi-house-door me-2"></i>
-        Edzések
-      </a>
+                <span class="fs-4 nevhatter fw-bold pe-5 text-start">
+                    <span class="text-white">Fit</span>Tracker
+                </span>
+                &times;
+            </button>
 
-      <a href="uj gyakorlat.html" class="nav-link text-white p-3">
-        <i class="bi bi-plus-circle me-2"></i>
-        Új gyakorlat
-      </a>
+            <a href="fooldal.html" class="nav-link text-white p-3">
+                <i class="bi bi-house-door me-2"></i>Edzések
+            </a>
 
-      <a href="#" class="nav-link text-white p-3">
-        <i class="bi bi-gear me-2"></i>
-        Beállítások
-      </a>
-    </nav>
+            <a href="uj gyakorlat.html" class="nav-link text-white p-3">
+                <i class="bi bi-plus-circle me-2"></i>Új gyakorlat
+            </a>
 
+            <a href="#" class="nav-link text-white p-3"
+                data-bs-toggle="modal" data-bs-target="#beallitasok">
+                <i class="bi bi-gear me-2"></i>Beállítások
+            </a>
 
-    <div id="main" class="p-3 bg-dark-teal d-flex align-items-center justify-content-between">
-      <button type="button" class="btn btn-light fs-3" onclick="openNav()" aria-label="Menü megnyitása">
-        <i class="bi bi-list"></i>
-      </button>
+        </nav>
 
-      <span class="fs-4 nevhatter fw-bold text-center"><span class="fs-4 text-white">Fit</span>Tracker</span>
-      <div class="text-center gap-2 pe-3">
-        <img width="50" height="50" class="img-fluid rounded-circle" src="kep/images.png" alt="Profilkép">
-        <span class="text-white">felhasznalonev</span>
-      </div>
-  </header>
+        <div id="main" class="p-3 bg-dark-teal d-flex align-items-center">
 
-  <main class="">
+            <button type="button" class="btn btn-light fs-3"
+                onclick="openNav()" aria-label="Menü megnyitása">
+                <i class="bi bi-list"></i>
+            </button>
 
-    <h1 class="p-5">Edzések</h1>
-    <section class="container text-center">
-      <button type="button" class="btn btn-lg gombhatter text-white">Base class</button>
-      <button type="button" class="btn btn-lg gombhatter text-white">Base class</button>
-      <button type="button" class="btn btn-lg gombhatter text-white">Base class</button>
-      <button type="button" class="btn btn-lg gombhatter text-white">Base class</button>
-      <button type="button" class="btn btn-lg gombhatter text-white">Base class</button>
-      <button type="button" class="btn btn-lg gombhatter text-white">Base class</button>
-    
-    </section>
-<div class="container px-4">
-<div  class="listaidk row gx-5">
+            <span class="fs-4 nevhatter fw-bold ms-3">
+                <span class="text-white">Fit</span>Tracker
+            </span>
 
-</div>
-</div>
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header bg-danger text-white">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p>biztosan törli?</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">mégse</button>
-            <button type="button" class="btn btn-warning torles" data-bs-dismiss="modal">Ok</button>
-          </div>
+            <div class="text-center ms-auto pe-3">
+                <button type="button" class="btn narancshatter"
+                    data-bs-toggle="modal" data-bs-target="#profilmodal">
+
+                    <img width="50" height="50"
+                        class="img-fluid rounded-circle"
+                        src="kep/images.png" alt="Profilkép">
+
+                    <span class="text-white" id="belepettNev">felhasznalonev</span>
+                </button>
+            </div>
+
         </div>
-      </div>
+    </header>
+
+    <main>
+
+        <h1 class="p-5 narancshatter">Edzések</h1>
+
+        <section id="myBtnContainer"
+            class="container text-center d-flex justify-content-center flex-wrap gap-3 pt-3">
+
+            <button type="button"
+                class="btn btn-lg gombhatter text-white szuro-gomb active"
+                data-filter="all" onclick="filterSelection('all')">
+                Mind
+            </button>
+
+            <button type="button"
+                class="btn btn-lg gombhatter text-white szuro-gomb"
+                data-filter="Hat" onclick="filterSelection('Hat')">
+                Hát
+            </button>
+
+            <button type="button"
+                class="btn btn-lg gombhatter text-white szuro-gomb"
+                data-filter="Vall" onclick="filterSelection('Vall')">
+                Váll
+            </button>
+
+            <button type="button"
+                class="btn btn-lg gombhatter text-white szuro-gomb"
+                data-filter="Mell" onclick="filterSelection('Mell')">
+                Mell
+            </button>
+
+            <button type="button"
+                class="btn btn-lg gombhatter text-white szuro-gomb"
+                data-filter="Lab" onclick="filterSelection('Lab')">
+                Láb
+            </button>
+
+            <button type="button"
+                class="btn btn-lg gombhatter text-white szuro-gomb"
+                data-filter="Kar" onclick="filterSelection('Kar')">
+                Kar
+            </button>
+
+        </section>
+
+        <!-- A JavaScript ide helyezi be a gyakorlatok kártyáit. -->
+        <section class="container pt-5">
+            <div class="row g-4" id="gyakorlatLista"></div>
+
+            <p id="uresLista" class="text-center text-white mt-4 d-none">
+                Még nincs elmentett gyakorlatod.
+                Adj hozzá egyet az „Új gyakorlat” oldalon!
+            </p>
+        </section>
+
+    </main>
+
+    <!-- PROFIL MODAL -->
+    <div class="modal fade" id="profilmodal" tabindex="-1"
+        aria-labelledby="profilmodalCim" aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark-teal text-white">
+
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="profilmodalCim">
+                        Profil
+                    </h1>
+
+                    <button type="button" class="btn-close narancshatter"
+                        data-bs-dismiss="modal" aria-label="Bezárás">
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="profilForm">
+
+                        <div class="mb-3">
+                            <label for="bejelentkezve" class="form-label fw-bold">
+                                Név:
+                            </label>
+                            <input type="text" class="form-control"
+                                id="bejelentkezve" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-bold">
+                                Email cím:
+                            </label>
+                            <input type="email" class="form-control"
+                                id="email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edzoimegnevezes" class="form-label fw-bold">
+                                Jelszó:
+                            </label>
+                            <input type="password" class="form-control"
+                                id="edzoimegnevezes" required>
+                        </div>
+
+                        <button type="button" class="btn btn-success"
+                            onclick="profil.ellenorzes()">
+                            Profil mentése
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
     </div>
-  </main>
 
-  <footer class="container py-3">
+    <!-- MEGTEKINTÉS MODAL -->
+    <div class="modal fade" id="megtekintes" tabindex="-1"
+        aria-labelledby="megtekintesCim" aria-hidden="true">
 
-  </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-<script src="JS/Gyakorlatok.js"></script>
-<script src="JS/script.js"></script>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark-teal text-white">
+
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="megtekintesCim">
+                        Edzés adatai
+                    </h1>
+
+                    <button type="button" class="btn-close narancshatter"
+                        data-bs-dismiss="modal" aria-label="Bezárás">
+                    </button>
+                </div>
+
+                <div class="modal-body" id="megtekintesTartalom"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SZERKESZTÉS MODAL -->
+    <div class="modal fade" id="szerkesztes" tabindex="-1"
+        aria-labelledby="szerkesztesCim" aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark-teal text-white">
+
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="szerkesztesCim">
+                        Gyakorlat szerkesztése
+                    </h1>
+
+                    <button type="button" class="btn-close narancshatter"
+                        data-bs-dismiss="modal" aria-label="Bezárás">
+                    </button>
+                </div>
+
+                <form id="szerkesztesForm">
+
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                            <label for="szerkNev" class="form-label">
+                                Gyakorlat neve
+                            </label>
+                            <input class="form-control" id="szerkNev" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="szerkIzom" class="form-label">
+                                Izomcsoport
+                            </label>
+
+                            <select class="form-select" id="szerkIzom" required>
+                                <option value="">Válassz</option>
+                                <option value="Hát">Hát</option>
+                                <option value="Váll">Váll</option>
+                                <option value="Mell">Mell</option>
+                                <option value="Láb">Láb</option>
+                                <option value="Kar">Kar</option>
+                                <option value="Has">Has</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="szerkNehezseg" class="form-label">
+                                Nehézség
+                            </label>
+
+                            <select class="form-select" id="szerkNehezseg" required>
+                                <option value="">Válassz</option>
+                                <option value="Könnyű">Könnyű</option>
+                                <option value="Közepes">Közepes</option>
+                                <option value="Nehéz">Nehéz</option>
+                            </select>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-6 mb-3">
+                                <label for="szerkSzettek" class="form-label">
+                                    Szettek száma
+                                </label>
+                                <input type="number" min="0" max="150"
+                                    class="form-control" id="szerkSzettek" required>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <label for="szerkIsmetles" class="form-label">
+                                    Ismétlések száma
+                                </label>
+                                <input type="number" min="0" max="50"
+                                    class="form-control" id="szerkIsmetles" required>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <label for="szerkPiheno" class="form-label">
+                                    Pihenőidő (másodperc)
+                                </label>
+                                <input type="number" min="0" max="30"
+                                    class="form-control" id="szerkPiheno" required>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <label for="szerkSuly" class="form-label">
+                                    Súly (kg)
+                                </label>
+                                <input type="number" min="0" max="300" step="any"
+                                    class="form-control" id="szerkSuly" required>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                            Mégse
+                        </button>
+
+                        <button type="submit" class="btn btn-success">
+                            <i class="bi bi-bookmark-plus"></i> Mentés
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- TÖRLÉS MEGERŐSÍTÉSE -->
+    <div class="modal fade" id="torlesModal" tabindex="-1"
+        aria-labelledby="torlesCim" aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header bg-danger text-white">
+                    <h1 class="modal-title fs-5" id="torlesCim">
+                        Gyakorlat törlése
+                    </h1>
+
+                    <button type="button" class="btn-close"
+                        data-bs-dismiss="modal" aria-label="Bezárás">
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    Biztosan törlöd ezt a gyakorlatot?
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                        Mégse
+                    </button>
+
+                    <button type="button" class="btn btn-danger"
+                        id="torlesMegerosit">
+                        Törlés
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- BEÁLLÍTÁSOK -->
+    <div class="modal fade" id="beallitasok" tabindex="-1"
+        aria-labelledby="beallitasokCim" aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark-teal text-white">
+
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="beallitasokCim">
+                        <i class="bi bi-gear me-2"></i>Beállítások
+                    </h1>
+
+                    <button type="button" class="btn-close narancshatter"
+                        data-bs-dismiss="modal" aria-label="Bezárás">
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="d-flex align-items-center gap-2">
+
+                        <h5 class="mb-0" id="weightTitle">
+                            Súly mértékegysége [kg]
+                        </h5>
+
+                        <div class="dropdown">
+
+                            <button type="button"
+                                class="btn btn-outline-secondary dropdown-toggle"
+                                id="sulyEgysegGomb"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                kg
+                            </button>
+
+                            <ul class="dropdown-menu narancshatter">
+                                <li>
+                                    <a class="dropdown-item" href="#" id="kg">kg</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#" id="lb">lbs</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="container py-3"></footer>
+
+    <!-- A Bootstrap csak egyszer töltődik be. -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/Profil.js"></script>
+    <script src="js/Gyakorlatok.js"></script>
+    <script src="js/script.js"></script>
+
 </body>
-</html>
-
-  </body>
-
 </html>

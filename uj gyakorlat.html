@@ -136,27 +136,64 @@
   </div>
 </div>
 
-<div class="modal fade modalSiker" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Sikeres mentés!</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"
-          aria-label="Bezárás"></button>
-      </div>
-      <div class="modal-body">
-        A gyakorlat sikeresen el lett mentve!
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal">
-          Rendben
-        </button>
-        <a href="fooldal.html" class="btn btn-primary">Főoldal</a>
-      </div>
+<div class="modal fade" id="uzenetModal" tabindex="-1"
+     aria-labelledby="uzenetCim" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="modal" aria-label="Bezárás"></button>
+            </div>
+
+            <div class="modal-body" id="uzenetSzoveg">
+                  
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Bezárás</button>
+
+                <a href="fooldal.html" id="fooldalGomb"
+                   class="btn btn-primary d-none">
+                    Vissza a főoldalra
+                </a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
+<div class="modal fade" id="uzenetModal" tabindex="-1"
+     aria-labelledby="uzenetCim" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="uzenetCim">
+                    Üzenet
+                </h5>
+
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Bezárás"></button>
+            </div>
+
+            <div class="modal-body" id="uzenetSzoveg">
+            </div>
+
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                    Bezárás
+                </button>
+
+                <a href="fooldal.html">Vissza a főoldalra </a>
+            </div>
+
+        </div>
+    </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/Gyakorlatok.js"></script>
   <script src="JS/script.js"></script>
