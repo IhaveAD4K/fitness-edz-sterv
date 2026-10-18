@@ -1,3 +1,7 @@
+var szerkesztendo = -1;
+var torlendo = -1;
+
+
 
 let edzsesek = JSON.parse(localStorage.getItem("edzsesek") || "[]").map(adat =>
     new Gyakorlatok(
@@ -50,19 +54,36 @@ function kiir() {
 
     edzsesek.forEach(gy => {
         lista.innerHTML += `
-            <div class="card p-3 col-2">
-                <h3>${htmlBiztonsagos(gy.getNev())}</h3>
-                <p>Izomcsoport: ${htmlBiztonsagos(gy.getIzomCsoport())}</p>
+            <div class="accordion accordion-flush col-2 gy-5" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+     
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+      <h3>${htmlBiztonsagos(gy.getNev())}</h3></button>
+    </h2>
+    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body"> <p>Izomcsoport: ${htmlBiztonsagos(gy.getIzomCsoport())}</p>
                 <p>Nehézség: ${htmlBiztonsagos(gy.getNehezseg())}</p>
                 <p>Szettek száma: ${gy.getSzettekSzama()}</p>
                 <p>Ismétlések száma: ${gy.getIsmetlesekSzama()}</p>
                 <p>Pihenőidő: ${gy.getPihenoIdo()} perc</p>
-                <p>Súly: ${gy.getSuly()} kg</p>
-            </div>
+                <p>Súly: ${gy.getSuly()} kg</p></div>
+                <i class="bi bi-trash text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="torol(${i})"></i>
+    </div>
+  </div>
+  </div>
         `;
     });
 }
+function torol(index){
+  torlendo = index;
 
+}
+document.querySelector(".torles").addEventListener('click', () => {
+  cipok.splice(torlendo, 1);
+  kiir();
+  
+});
 const mentesGomb = document.querySelector(".mentes");
 
 if (mentesGomb) {
