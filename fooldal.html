@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -42,8 +43,11 @@
 
         <div id="main" class="p-3 bg-dark-teal d-flex align-items-center">
 
-            <button type="button" class="btn btn-light fs-3"
-                onclick="openNav()" aria-label="Menü megnyitása">
+            <button type="button"
+                class="btn btn-light fs-3"
+                onclick="openNav()"
+                aria-label="Menü megnyitása">
+
                 <i class="bi bi-list"></i>
             </button>
 
@@ -52,18 +56,26 @@
             </span>
 
             <div class="text-center ms-auto pe-3">
-                <button type="button" class="btn narancshatter"
-                    data-bs-toggle="modal" data-bs-target="#profilmodal">
+
+                <button type="button"
+                    class="btn narancshatter"
+                    data-bs-toggle="modal"
+                    data-bs-target="#profilmodal">
 
                     <img width="50" height="50"
                         class="img-fluid rounded-circle"
-                        src="kep/images.png" alt="Profilkép">
+                        src="kep/images.png"
+                        alt="Profilkép">
 
-                    <span class="text-white" id="belepettNev">felhasznalonev</span>
+                    <span class="text-white" id="belepettNev">
+                        felhasznalonev
+                    </span>
+
                 </button>
-            </div>
 
+            </div>
         </div>
+
     </header>
 
     <main>
@@ -71,41 +83,47 @@
         <h1 class="p-5 narancshatter">Edzések</h1>
 
         <section id="myBtnContainer"
-            class="container text-center d-flex justify-content-center flex-wrap gap-3 pt-3">
+            class="container text-center d-flex justify-content-center flex-wrap gap-5 pt-3">
 
             <button type="button"
                 class="btn btn-lg gombhatter text-white szuro-gomb active"
-                data-filter="all" onclick="filterSelection('all')">
+                data-filter="all"
+                onclick="filterSelection('all')">
                 Mind
             </button>
 
             <button type="button"
                 class="btn btn-lg gombhatter text-white szuro-gomb"
-                data-filter="Hat" onclick="filterSelection('Hat')">
+                data-filter="Hat"
+                onclick="filterSelection('Hat')">
                 Hát
             </button>
 
             <button type="button"
                 class="btn btn-lg gombhatter text-white szuro-gomb"
-                data-filter="Vall" onclick="filterSelection('Vall')">
+                data-filter="Vall"
+                onclick="filterSelection('Vall')">
                 Váll
             </button>
 
             <button type="button"
                 class="btn btn-lg gombhatter text-white szuro-gomb"
-                data-filter="Mell" onclick="filterSelection('Mell')">
+                data-filter="Mell"
+                onclick="filterSelection('Mell')">
                 Mell
             </button>
 
             <button type="button"
                 class="btn btn-lg gombhatter text-white szuro-gomb"
-                data-filter="Lab" onclick="filterSelection('Lab')">
+                data-filter="Lab"
+                onclick="filterSelection('Lab')">
                 Láb
             </button>
 
             <button type="button"
                 class="btn btn-lg gombhatter text-white szuro-gomb"
-                data-filter="Kar" onclick="filterSelection('Kar')">
+                data-filter="Kar"
+                onclick="filterSelection('Kar')">
                 Kar
             </button>
 
@@ -147,33 +165,47 @@
                             <label for="bejelentkezve" class="form-label fw-bold">
                                 Név:
                             </label>
-                            <input type="text" class="form-control"
-                                id="bejelentkezve" required>
+
+                            <input type="text"
+                                class="form-control"
+                                id="bejelentkezve"
+                                required>
                         </div>
 
                         <div class="mb-3">
                             <label for="email" class="form-label fw-bold">
                                 Email cím:
                             </label>
-                            <input type="email" class="form-control"
-                                id="email" required>
+
+                            <input type="email"
+                                class="form-control"
+                                id="email"
+                                required>
                         </div>
 
                         <div class="mb-3">
                             <label for="edzoimegnevezes" class="form-label fw-bold">
                                 Jelszó:
                             </label>
-                            <input type="password" class="form-control"
-                                id="edzoimegnevezes" required>
+
+                            <input type="password"
+                                class="form-control"
+                                id="edzoimegnevezes"
+                                required>
                         </div>
 
-                        <button type="button" class="btn btn-success"
+                        <button type="button"
+                            class="btn btn-success"
                             onclick="profil.ellenorzes()">
+
                             Profil mentése
                         </button>
 
                     </form>
+
                 </div>
+
+                <div class="modal-footer"></div>
 
             </div>
         </div>
